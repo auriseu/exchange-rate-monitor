@@ -1,0 +1,21 @@
+.container {
+	text-align: center;
+}
+
+.panel-left {
+	width: 30%;
+	padding: 1%;
+}
+
+.panel-right {
+	width: 65%;
+    padding: 1%;
+}
+
+.left {
+	float: left;
+}
+
+.right{
+	float: right;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/standard.xhtml">
+
+	<ui:define name="content">
+		<div class="panel-left left">
+			<h:form id="submitForm">
+				<h:panelGrid cellspacing="2" columns="1" style="text-align: center;">
+				    <p:calendar id="dateInput" value="#{currencyService.currencyList.date}" maxdate="#{currencyService.maxDate}" pattern="yyyy-MM-dd" mode="inline" />
+					<p:commandButton action="search" value="Search" update="currency-list" />
+				</h:panelGrid>
+			</h:form>
+		</div>
+		
+		<div class="panel-right right">
+			<p:dataTable id="currency-list" var="currency" value="#{currencyService.currencyList.currencyList}" styleClass="data_table">
+			    <p:column headerText="Currency">
+			        <h:outputText value="#{currency.name}" />
+			    </p:column>
+			 
+			    <p:column headerText="Quantity">
+			        <h:outputText value="#{currency.quantity}" />
+			    </p:column>
+			 
+			    <p:column headerText="Rate">
+			        <h:outputText value="#{currency.rate}" />
+			    </p:column>
+			    
+			    <p:column headerText="Change">
+			        <h:outputText value="#{currency.rateDifference}" />
+			    </p:column>
+			 
+			    <p:column headerText="Unit">
+			        <h:outputText value="#{currency.unit}" />
+	    		</p:column>
+			</p:dataTable>
+		</div>
+	</ui:define>
+
+</ui:composition>
